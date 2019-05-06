@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/navi_calendar"
+            android:icon="@drawable/icon_calendar"
+            android:title="@string/navigation_Calendar"/>
+    <item
+            android:id="@+id/navi_community"
+            android:icon="@drawable/icon_community"
+            android:title="@string/navigation_Community"/>
+    <item
+            android:id="@+id/navi_createTeam"
+            android:icon="@drawable/icon_createteam"
+            android:title="@string/navigation_CreateTeam"/>
+
+</menu>
