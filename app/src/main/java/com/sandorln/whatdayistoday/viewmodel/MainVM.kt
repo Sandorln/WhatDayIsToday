@@ -14,16 +14,18 @@ class MainVM : ViewModel() {
     private lateinit var active: Fragment
 
     private val calendarMainFragment = CalendarMainFragment()
-//    private val communityMainFragment = CommunityMainFragment()
-//    private val createTeamMainFragment = CreateTeamMainFragment()
+    private val communityMainFragment = CommunityMainFragment()
+    private val createTeamMainFragment = CreateTeamMainFragment()
 
     /**
      * BottomNavigation 첫 초기화 작업
      */
     fun setupNavigationItem(fm: FragmentManager) {
         fm.beginTransaction().add(R.id.f_mainContent, calendarMainFragment, "calendar")
-//            .add(R.id.f_mainContent, communityMainFragment, "community").hide(communityMainFragment)
-//            .add(R.id.f_mainContent, createTeamMainFragment, "createteam").hide(createTeamMainFragment)
+            .commit()
+        fm.beginTransaction().add(R.id.f_mainContent, communityMainFragment, "community").hide(communityMainFragment)
+            .commit()
+        fm.beginTransaction().add(R.id.f_mainContent, createTeamMainFragment, "createteam").hide(createTeamMainFragment)
             .commit()
         active = calendarMainFragment
     }
@@ -35,19 +37,28 @@ class MainVM : ViewModel() {
     fun selectNavigationItem(selectItem: MenuItem, fm: FragmentManager): Boolean {
         return when (selectItem.itemId) {
             R.id.navi_calendar -> {
-                fm.beginTransaction().hide(active).show(calendarMainFragment).commit()
-                active = calendarMainFragment
-                true
+                if (active != calendarMainFragment) {
+                    fm.beginTransaction().hide(active).show(calendarMainFragment).commit()
+                    active = calendarMainFragment
+                    true
+                } else
+                    false
             }
             R.id.navi_community -> {
-//                fm.beginTransaction().hide(active).show(communityMainFragment).commit()
-//                active = communityMainFragment
-                true
+                if (active != communityMainFragment) {
+                    fm.beginTransaction().hide(active).show(communityMainFragment).commit()
+                    active = communityMainFragment
+                    true
+                } else
+                    false
             }
             R.id.navi_createTeam -> {
-//                fm.beginTransaction().hide(active).show(createTeamMainFragment).commit()
-//                active = createTeamMainFragment
-                true
+                if (active != createTeamMainFragment) {
+                    fm.beginTransaction().hide(active).show(createTeamMainFragment).commit()
+                    active = createTeamMainFragment
+                    true
+                } else
+                    false
             }
             else -> false
         }

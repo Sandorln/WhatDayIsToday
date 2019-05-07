@@ -9,6 +9,6 @@ import com.sandorln.whatdayistoday.R
 
 class CreateTeamMainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_createteam_main, container).rootView
+        return inflater.inflate(R.layout.f_createteam_main, container, false).rootView
     }
 }
