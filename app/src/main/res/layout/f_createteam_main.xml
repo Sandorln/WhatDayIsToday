@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:padding="30dp"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
-    <TextView
+    <ImageView
+            android:src="@drawable/img_createteam"
             android:gravity="center"
-            android:text="CREATE TEAM"
             android:textSize="50sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
