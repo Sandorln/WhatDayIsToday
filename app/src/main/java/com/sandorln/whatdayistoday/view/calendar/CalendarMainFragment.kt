@@ -25,5 +25,6 @@ class CalendarMainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         vp_month.adapter = MonthAdapter(fragmentManager!!, viewModel)
+        vp_month.currentItem = 0
     }
 }

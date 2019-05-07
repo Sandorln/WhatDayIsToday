@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sandorln.whatdayistoday.R
@@ -23,7 +24,7 @@ class CalendarMonthFragment : Fragment() {
         inflater.inflate(R.layout.f_calendar_month, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        rc_month.layoutManager = GridLayoutManager(view.context, 7, GridLayoutManager.HORIZONTAL, false)
+        rc_month.layoutManager = GridLayoutManager(view.context, 7)
         rc_month.adapter = DayAdapter()
     }
 }
