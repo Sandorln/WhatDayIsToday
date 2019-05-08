@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sandorln.whatdayistoday.R
 import com.sandorln.whatdayistoday.data.MonthData
 import com.sandorln.whatdayistoday.view.calendar.adapter.DayAdapter
@@ -25,6 +27,8 @@ class CalendarMonthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         rc_month.layoutManager = GridLayoutManager(view.context, 7)
+        rc_month.addItemDecoration(DividerItemDecoration(view.context, GridLayoutManager.HORIZONTAL))
+        rc_month.addItemDecoration(DividerItemDecoration(view.context, GridLayoutManager.VERTICAL))
         rc_month.adapter = DayAdapter()
     }
 }

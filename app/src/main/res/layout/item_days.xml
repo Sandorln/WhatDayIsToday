@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="dayData" type="com.sandorln.whatdayistoday.data.DayData"/>
+        <variable name="day" type="Integer"/>
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
@@ -10,6 +16,7 @@
                 android:id="@+id/tx_dayNum"
                 android:gravity="center"
                 android:textSize="12.5sp"
+                android:text='@{"" + day}'
                 android:hint="99"
                 app:layout_constraintHorizontal_weight="0.4"
                 app:layout_constraintVertical_weight="0.2"
@@ -24,6 +31,7 @@
         <TextView
                 android:id="@+id/tx_holiday"
                 android:layout_marginStart="5dp"
+                android:text="@{dayData.holiday}"
                 android:textSize="8sp"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -66,7 +74,7 @@
                 android:id="@+id/tx_overTime"
                 android:gravity="center_vertical"
                 android:textSize="8sp"
-                android:text="+ 3:00"
+                android:text='@{" + 00 : " + dayData.overTime}'
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintTop_toTopOf="@id/img_overtime"
                 app:layout_constraintStart_toEndOf="@id/img_overtime"
@@ -88,13 +96,12 @@
                 android:layout_height="0dp"/>
 
         <TextView
-
                 android:id="@+id/tx_memo"
                 android:textSize="8sp"
                 android:gravity="start|center_vertical"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:text="꺌"
+                android:text="@{dayData.memo}"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintTop_toTopOf="@id/img_memo"
                 app:layout_constraintStart_toEndOf="@id/img_memo"

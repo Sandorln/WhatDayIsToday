@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="vm" type="com.sandorln.whatdayistoday.viewmodel.CalendarDetailViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:id="@+id/title"
+                android:elevation="5dp"
+                android:weightSum="1"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+            <ImageView
+                    android:padding="10dp"
+                    android:layout_weight="0.1"
+                    android:src="@drawable/icon_leftarrow"
+                    android:tint="@color/colorBase"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"/>
+            <TextView
+                    android:id="@+id/tx_day"
+                    android:textColor="@color/colorBase"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:text="1988.02.16"
+                    android:layout_weight="0.8"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:weightSum="1"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintBottom_toTopOf="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_margin="20dp"
+                    android:layout_weight="0.2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+
+                <ImageView
+                        android:id="@+id/img_workinfo"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tx_title_workinfo"
+                        app:layout_constraintBottom_toTopOf="@+id/rc_workinfo"
+                        app:layout_constraintHorizontal_weight="0.1"
+                        android:src="@drawable/icon_calendar_detail_workinfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:text="근무형태"
+                        android:gravity="bottom|start"
+                        android:id="@+id/tx_title_workinfo"
+                        app:layout_constraintStart_toEndOf="@id/img_workinfo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/img_workinfo"
+                        app:layout_constraintBottom_toBottomOf="@id/img_workinfo"
+                        app:layout_constraintHorizontal_weight="0.9"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rc_workinfo"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        app:layout_constraintTop_toBottomOf="@id/img_workinfo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_margin="20dp"
+                    android:layout_weight="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+
+                <ImageView
+                        android:id="@+id/img_overtime"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tx_title_overTime"
+                        app:layout_constraintBottom_toTopOf="@+id/tx_overTime"
+                        app:layout_constraintHorizontal_weight="0.1"
+                        android:src="@drawable/icon_calendar_detail_overtime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:text="추가근무"
+                        android:gravity="bottom|start"
+                        android:id="@+id/tx_title_overTime"
+                        app:layout_constraintStart_toEndOf="@id/img_overtime"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/img_overtime"
+                        app:layout_constraintBottom_toBottomOf="@id/img_overtime"
+                        app:layout_constraintHorizontal_weight="0.9"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"/>
+
+                <TextView
+                        app:layout_constraintTop_toBottomOf="@+id/img_overtime"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:gravity="center"
+                        android:textSize="70sp"
+                        android:text='@{"" + vm.dayData.overTime}'
+                        android:hint="00 : 00"
+                        android:id="@+id/tx_overTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_margin="20dp"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+
+                <ImageView
+                        android:id="@+id/img_memo"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tx_title_memo"
+                        app:layout_constraintBottom_toTopOf="@+id/etx_memo"
+                        app:layout_constraintHorizontal_weight="0.1"
+                        android:src="@drawable/icon_calendar_detail_overtime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:text="메모"
+                        android:gravity="bottom|start"
+                        android:id="@+id/tx_title_memo"
+                        app:layout_constraintStart_toEndOf="@id/img_memo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/img_memo"
+                        app:layout_constraintBottom_toBottomOf="@id/img_memo"
+                        app:layout_constraintHorizontal_weight="0.9"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"/>
+
+                <EditText
+                        android:gravity="top|start"
+                        android:id="@+id/etx_memo"
+                        android:text="@{vm.dayData.memo}"
+                        app:layout_constraintTop_toBottomOf="@id/img_memo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <Button
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="저장하기"
+                android:id="@+id/btn_save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:backgroundTint="@color/colorBase"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
