@@ -13,6 +13,7 @@
             android:layout_height="match_parent">
 
         <LinearLayout
+                android:background="@color/colorWhite"
                 app:layout_constraintVertical_chainStyle="packed"
                 android:id="@+id/month_title"
                 app:layout_constraintBottom_toTopOf="@+id/week_title"
@@ -32,7 +33,7 @@
             <TextView
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:hint="1988.02.16"
+                    android:hint="1988.02"
                     android:gravity="center"
                     android:layout_weight="0.8"
                     android:layout_width="0dp"

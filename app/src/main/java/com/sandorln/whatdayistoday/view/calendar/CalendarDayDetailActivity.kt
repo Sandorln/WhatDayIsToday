@@ -20,7 +20,7 @@ class CalendarDayDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.dayData.value = DayData("공휴일은 언제일까", "메모값이다 메모", 300)
+        viewModel.setUP(DayData("공휴일은 언제일까", "메모값이다 메모", 300))
         binding.vm = viewModel
     }
 }

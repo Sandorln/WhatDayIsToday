@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
         <variable name="vm" type="com.sandorln.whatdayistoday.viewmodel.CalendarDetailViewModel"/>
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
@@ -10,6 +12,7 @@
             android:layout_height="match_parent">
 
         <LinearLayout
+                android:background="@color/colorWhite"
                 android:id="@+id/title"
                 android:elevation="5dp"
                 android:weightSum="1"
@@ -118,7 +121,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:gravity="center"
                         android:textSize="70sp"
-                        android:text='@{"" + vm.dayData.overTime}'
+                        android:text='@{ String.format(" %2d : %2d ", vm.overTime / 60 , vm.overTime % 60) }'
                         android:hint="00 : 00"
                         android:id="@+id/tx_overTime"
                         android:layout_width="match_parent"
@@ -127,7 +130,9 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="0.5"
                     android:layout_width="match_parent"
                     android:layout_height="0dp">
@@ -137,7 +142,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/tx_title_memo"
-                        app:layout_constraintBottom_toTopOf="@+id/etx_memo"
+                        app:layout_constraintBottom_toTopOf="@+id/memoLayout"
                         app:layout_constraintHorizontal_weight="0.1"
                         android:src="@drawable/icon_calendar_detail_overtime"
                         android:layout_width="0dp"
@@ -155,17 +160,20 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"/>
 
-                <EditText
-                        android:gravity="top|start"
-                        android:id="@+id/etx_memo"
-                        android:text="@{vm.dayData.memo}"
+                <LinearLayout
+                        android:id="@+id/memoLayout"
+                        android:gravity="top"
                         app:layout_constraintTop_toBottomOf="@id/img_memo"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"/>
-
+                        android:layout_height="0dp">
+                    <EditText
+                            android:id="@+id/etx_memo"
+                            android:text="@={vm.memo}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </LinearLayout>
 
         <Button
