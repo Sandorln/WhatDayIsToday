@@ -35,8 +35,4 @@ class CalendarMainFragment : Fragment() {
             }
         })
     }
-
-    companion object {
-        private const val MIN_SCALE = 0.75f
-    }
 }
