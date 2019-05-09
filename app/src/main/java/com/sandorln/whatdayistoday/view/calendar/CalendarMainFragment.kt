@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.sandorln.whatdayistoday.databinding.FCalendarMainBinding
 import com.sandorln.whatdayistoday.view.calendar.adapter.MonthAdapter
 import com.sandorln.whatdayistoday.viewmodel.CalendarMainVM
@@ -24,7 +25,18 @@ class CalendarMainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vp_month.adapter = MonthAdapter(fragmentManager!!, viewModel)
+        vp_month.adapter = MonthAdapter(viewModel.listMonthData)
+        tx_selectMonth.text = "${viewModel.listMonthData[0].selectY} . ${viewModel.listMonthData[0].selectM}"
         vp_month.currentItem = 0
+        vp_month.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                tx_selectMonth.text =
+                    "${viewModel.listMonthData[position].selectY} . ${viewModel.listMonthData[position].selectM}"
+            }
+        })
+    }
+
+    companion object {
+        private const val MIN_SCALE = 0.75f
     }
 }

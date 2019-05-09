@@ -9,7 +9,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sandorln.whatdayistoday.R
 import com.sandorln.whatdayistoday.databinding.AMainBinding
 import com.sandorln.whatdayistoday.viewmodel.MainVM
-import kotlinx.android.synthetic.main.a_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
      * Main Bottom Navigation Item Change 시
      * _ ViewModel 에서 처리하도록
      */
-    override fun onNavigationItemSelected(selectItem: MenuItem): Boolean {
-        return viewModel.selectNavigationItem(selectItem, supportFragmentManager)
-    }
+    override fun onNavigationItemSelected(selectItem: MenuItem): Boolean =
+        viewModel.selectNavigationItem(selectItem, supportFragmentManager)
 }
