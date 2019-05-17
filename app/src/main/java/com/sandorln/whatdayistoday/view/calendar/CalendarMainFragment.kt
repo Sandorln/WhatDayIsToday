@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.f_calendar_main.*
 class CalendarMainFragment : Fragment() {
 
     lateinit var binding: FCalendarMainBinding
-    private val viewModel: CalendarMainVM by lazy { ViewModelProviders.of(this)[CalendarMainVM::class.java] }
+    private val viewModel: CalendarMainVM by lazy { ViewModelProviders.of(this.activity!!)[CalendarMainVM::class.java] }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FCalendarMainBinding.inflate(inflater, container, false)
